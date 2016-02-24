@@ -1,6 +1,6 @@
 {
-    "name" : "stackinstance/mailerbundle",
-    "description" : "Stack Instance Mailer bundle",
+    "name" : "stackinstance/mailer",
+    "description" : "Stack Instance Mailer",
     "type" : "symfony-bundle",
     "authors" : [{
         "name" : "Ray Kootstra",
