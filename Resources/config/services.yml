@@ -1,4 +1,4 @@
 services:
-#    stack_instance_mailer.example:
-#        class: StackInstance\MailerBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    stack_instance.mailer:
+        class: StackInstance\MailerBundle\Service\Mailer
+        arguments: [@mailer]
