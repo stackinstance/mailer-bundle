@@ -1,4 +1,4 @@
 services:
     stack_instance.mailer:
         class: StackInstance\MailerBundle\Service\Mailer
-        arguments: [@mailer]
+        arguments: ["@mailer"]
