@@ -16,12 +16,6 @@
         "php": ">=5.5.0",
         "swiftmailer/swiftmailer": "5.4.*"
     },
-    "autoload" : {
-        "psr-0" : {
-            "StackInstance\\MailerBundle" : ""
-        }
-    },
-    "target-dir" : "StackInstance/MailerBundle",
     "repositories" : [{
         "type" : "vcs",
         "url" : "http://git.kootstradevelopment.nl/r.kootstra/stackinstance-bundles-mailer-bundle.git"
