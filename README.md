@@ -4,7 +4,7 @@
 ### composer.json
     "require" : {
         [...]
-        "stackinstance/mailerbundle" : "dev-master"
+        "stackinstance/mailer" : "dev-master"
     },
     "repositories" : [{
         "type" : "vcs",
