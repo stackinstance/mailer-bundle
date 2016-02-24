@@ -1,5 +1,5 @@
 {
-    "name" : "stackinstance/mailer",
+    "name" : "stackinstance/mailer-bundle",
     "description" : "Stack Instance Mailer",
     "type" : "symfony-bundle",
     "authors" : [{
@@ -20,6 +20,11 @@
         "type" : "vcs",
         "url" : "http://git.kootstradevelopment.nl/r.kootstra/stackinstance-bundles-mailer-bundle.git"
     }],
+    "autoload": {
+        "psr-0": { "StackInstance\\MailerBundle": "" }
+    },
+
+    "target-dir": "StackInstance/MailerBundle",
     "extra" : {
     "branch-alias" : {
             "dev-master" : "0.0.1-dev"
