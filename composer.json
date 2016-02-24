@@ -1,0 +1,30 @@
+{
+    "name" : "stackinstance/mailerbundle",
+    "description" : "Stack Instance Mailer bundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Ray Kootstra",
+        "email" : "r.kootstra@stackinstance.com"
+    }],
+    "keywords" : [
+        "mailer bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "StackInstance\\MailerBundle" : ""
+        }
+    },
+    "target-dir" : "StackInstance/MailerBundle",
+    "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "0.0.1-dev"
+        }
+    }
+}
