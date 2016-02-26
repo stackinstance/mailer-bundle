@@ -3,7 +3,7 @@
 ## How to install
 composer require stackinstance/mailer-bundle
 
-## USAGE
+## Usage
 ```PHP
 /**
  * @Route("/mail", name="mail")
