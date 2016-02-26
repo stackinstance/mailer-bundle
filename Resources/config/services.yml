@@ -2,3 +2,6 @@ services:
     stack_instance.mailer:
         class: StackInstance\MailerBundle\Service\Mailer
         arguments: ["@mailer"]
+
+    stack_instance.attachment:
+            class: StackInstance\MailerBundle\Service\Attachment
