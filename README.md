@@ -5,3 +5,6 @@ composer require stackinstance/mailer-bundle
 
 ## TODO
 Add multiple file attachments to email
+
+## Website
+http://bundles.stackinstance.com
