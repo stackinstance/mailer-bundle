@@ -7,6 +7,6 @@ composer require stackinstance/mailer-bundle
 Add multiple file attachments to email
 
 ## Website
-http://bundles.stackinstance.com
-http://www.stackinstance.com
-https://codedump.io
+- http://bundles.stackinstance.com
+- http://www.stackinstance.com
+- https://codedump.io
