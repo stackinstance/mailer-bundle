@@ -4,4 +4,4 @@
 composer require stackinstance/mailer-bundle
 
 ## TODO
-Add file attachments option
+Add multiple file attachments to email
