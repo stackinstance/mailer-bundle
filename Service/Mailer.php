@@ -42,30 +42,44 @@ class Mailer
     }
 
     /**
-     * @param string    $subject
-     * @param string    $body
-     * @param array     $to
-     * @param array     $from
-     * @param array     $attachments
+     * @param string               $subject
+     * @param string               $body
+     * @param array|string         $to
+     * @param array|string         $from
+     * @param array|Attachment|null    $attachments
      * @return $this
      */
-    public function send($subject, $body, array $to, array $from, array $attachments)
+    public function send($subject, $body, $to, $from, $attachments = null)
     {
         $this->message->setSubject($subject);
         $this->message->setFrom($from);
         $this->message->setTo($to);
         $this->message->setBody($body, self::BODY_TYPE);
 
-        /** @var Attachment $attachment */
-        foreach($attachments as $attachment) {
-            if ($attachment instanceof Attachment) {
-                $this->attach($attachment);
-            }
-        }
+        $this->processAttachments($attachments);
 
         $this->mailer->send($this->message);
 
         return $this;
+    }
+
+    /**
+     * @param Attachment|array $attachments
+     */
+    protected function processAttachments($attachments)
+    {
+        if (is_array($attachments) === true) {
+            /** @var Attachment $attachment */
+            foreach ($attachments as $attachment) {
+                if ($attachment instanceof Attachment) {
+                    $this->attach($attachment);
+                }
+            }
+        } else {
+            if ($attachments instanceof Attachment) {
+                $this->attach($attachments);
+            }
+        }
     }
 
     /**
