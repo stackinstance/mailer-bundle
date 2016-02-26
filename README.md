@@ -8,3 +8,4 @@ Add multiple file attachments to email
 
 ## Website
 http://bundles.stackinstance.com
+http://www.stackinstance.com
