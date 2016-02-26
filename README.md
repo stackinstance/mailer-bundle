@@ -3,8 +3,21 @@
 ## How to install
 composer require stackinstance/mailer-bundle
 
-## TODO
-Add multiple file attachments to email
+## USAGE
+```PHP
+/**
+ * @Route("/mail", name="mail")
+ */
+public function mailAction()
+{
+    $mailer     = $this->container->get('stack_instance.mailer');
+    $attachment = $this->container->get('stack_instance.attachment');
+
+    $attachment->attach('/path/to/file/test.csv', 'file.csv', 'text/csv');
+
+    $mailer->send('This is my subject', 'This is the body', 'to@example.org', 'from@example.org', $attachment);
+}
+```
 
 ## Website
 - http://bundles.stackinstance.com
