@@ -11,7 +11,7 @@ composer require stackinstance/mailer-bundle
 public function mailAction()
 {
     $mailer     = $this->container->get('stack_instance.mailer');
-    $attachment = $this->container->get('stack_instance.attachment');
+    $attachment = new Attachment();
 
     $attachment->attach('/path/to/file/test.csv', 'file.csv', 'text/csv');
 
