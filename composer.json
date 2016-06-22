@@ -18,12 +18,11 @@
     },
     "repositories" : [{
         "type" : "vcs",
-        "url" : "http://git.kootstradevelopment.nl/r.kootstra/stackinstance-bundles-mailer-bundle.git"
+        "url" : "https://github.com/stackinstance/mailer-bundle"
     }],
     "autoload": {
         "psr-0": { "StackInstance\\MailerBundle": "" }
     },
-
     "target-dir": "StackInstance/MailerBundle",
     "version": "1.0.0",
     "minimum-stability": "stable",
