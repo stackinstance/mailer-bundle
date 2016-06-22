@@ -1,19 +1,6 @@
 <?php
 
-<<<<<<< HEAD
 namespace StackInstance\MailerBundle\DependencyInjection;
-=======
-/*
- * This file is part of the Api server bundle from Stack Instance.
- *
- * (c) 2016 Ray Kootstra
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace StackInstance\ApiServerBundle\DependencyInjection;
->>>>>>> c6f2158958aa3a4baf49bc57b8c1b2cc46118e9f
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -25,22 +12,18 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfigTreeBuilder()
-    {
-        $treeBuilder = new TreeBuilder();
-<<<<<<< HEAD
-        $rootNode = $treeBuilder->root('stack_instance_mailer');
-=======
-        $rootNode = $treeBuilder->root('stack_instance_api_server');
->>>>>>> c6f2158958aa3a4baf49bc57b8c1b2cc46118e9f
+        /**
+         * {@inheritdoc}
+         */
+        public function getConfigTreeBuilder()
+        {
+                $treeBuilder = new TreeBuilder();
+                $rootNode = $treeBuilder->root('stack_instance_mailer');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+                // Here you should define the parameters that are allowed to
+                // configure your bundle. See the documentation linked above for
+                // more information on that topic.
 
-        return $treeBuilder;
-    }
+                return $treeBuilder;
+        }
 }
