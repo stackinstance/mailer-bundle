@@ -1,8 +1,4 @@
 services:
-<<<<<<< HEAD
     stack_instance.mailer:
         class: StackInstance\MailerBundle\Service\Mailer
         arguments: ["@mailer"]
-=======
-
->>>>>>> c6f2158958aa3a4baf49bc57b8c1b2cc46118e9f
