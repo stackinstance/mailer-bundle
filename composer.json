@@ -25,10 +25,7 @@
     },
 
     "target-dir": "StackInstance/MailerBundle",
-    "extra" : {
-    "branch-alias" : {
-            "dev-master" : "1.0.0"
-        }
-    },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
