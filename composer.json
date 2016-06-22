@@ -1,19 +1,29 @@
 {
+<<<<<<< HEAD
     "name" : "stackinstance/mailer-bundle",
     "description" : "Stack Instance Mailer",
+=======
+    "name" : "stackinstance/api-server-bundle",
+    "description" : "Stack Instance Api Server",
+>>>>>>> c6f2158958aa3a4baf49bc57b8c1b2cc46118e9f
     "type" : "symfony-bundle",
     "authors" : [{
         "name" : "Ray Kootstra",
         "email" : "r.kootstra@stackinstance.com"
     }],
     "keywords" : [
+<<<<<<< HEAD
         "mailer bundle"
+=======
+        "api server bundle"
+>>>>>>> c6f2158958aa3a4baf49bc57b8c1b2cc46118e9f
     ],
     "license" : [
         "MIT"
     ],
     "require" : {
         "php": ">=5.5.0",
+<<<<<<< HEAD
         "swiftmailer/swiftmailer": "5.4.*"
     },
     "repositories" : [{
@@ -25,6 +35,22 @@
     },
 
     "target-dir": "StackInstance/MailerBundle",
+=======
+        "doctrine/doctrine-fixtures-bundle": "~2.3",
+        "phpunit/phpunit": "4.8.*",
+        "doctrine/doctrine-migrations-bundle": "1.0.*",
+        "doctrine/migrations": "~1.0"
+    },
+    "repositories" : [{
+        "type" : "vcs",
+        "url" : "http://git.kootstradevelopment.nl/r.kootstra/stackinstance-bundles-api-server-bundle.git"
+    }],
+    "autoload": {
+        "psr-0": { "StackInstance\\ApiServerBundle": "" }
+    },
+
+    "target-dir": "StackInstance/ApiServerBundle",
+>>>>>>> c6f2158958aa3a4baf49bc57b8c1b2cc46118e9f
     "version": "1.0.0",
     "minimum-stability": "stable",
     "prefer-stable": true
