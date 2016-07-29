@@ -47,7 +47,7 @@ class Mailer
      * @param array|string         $to
      * @param array|string         $from
      * @param array|Attachment|null    $attachments
-     * @return $this
+     * @return int
      */
     public function send($subject, $body, $to, $from, $attachments = null)
     {
@@ -58,9 +58,8 @@ class Mailer
 
         $this->processAttachments($attachments);
 
-        $this->mailer->send($this->message);
+        return $this->mailer->send($this->message);
 
-        return $this;
     }
 
     /**
