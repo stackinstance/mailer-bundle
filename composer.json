@@ -24,7 +24,7 @@
         "psr-0": { "StackInstance\\MailerBundle": "" }
     },
     "target-dir": "StackInstance/MailerBundle",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "minimum-stability": "stable",
     "prefer-stable": true
 }
