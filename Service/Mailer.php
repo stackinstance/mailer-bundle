@@ -46,7 +46,7 @@ class Mailer
      * @param string               $body
      * @param array|string         $to
      * @param array|string         $from
-     * @param array|Attachment|null    $attachments
+     * @param array|AttachmentInterface|null    $attachments
      * @return int
      */
     public function send($subject, $body, $to, $from, $attachments = null)
@@ -63,29 +63,29 @@ class Mailer
     }
 
     /**
-     * @param Attachment|array $attachments
+     * @param AttachmentInterface|array $attachments
      */
     protected function processAttachments($attachments)
     {
         if (is_array($attachments) === true) {
             /** @var Attachment $attachment */
             foreach ($attachments as $attachment) {
-                if ($attachment instanceof Attachment) {
+                if ($attachment instanceof AttachmentInterface) {
                     $this->attach($attachment);
                 }
             }
         } else {
-            if ($attachments instanceof Attachment) {
+            if ($attachments instanceof AttachmentInterface) {
                 $this->attach($attachments);
             }
         }
     }
 
     /**
-     * @param Attachment $attachment
+     * @param AttachmentInterface $attachment
      * @return $this
      */
-    public function attach(Attachment $attachment)
+    public function attach(AttachmentInterface $attachment)
     {
         $mailAttachment = \Swift_Attachment::fromPath($attachment->getFile());
 

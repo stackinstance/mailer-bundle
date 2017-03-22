@@ -18,7 +18,7 @@ namespace StackInstance\MailerBundle\Service;
  * @package StackInstance\MailerBundle\Service
  * @author Ray Kootstra <r.kootstra@stackinstance.com>
  */
-class Attachment
+class Attachment implements AttachmentInterface
 {
 
     /**
@@ -37,9 +37,7 @@ class Attachment
     protected $mimeType;
 
     /**
-     * @param string      $file
-     * @param string|null $filename
-     * @param string|null $mimeType
+     * {@inheritdoc}
      */
     public function attach($file, $filename = null, $mimeType = null)
     {
@@ -52,10 +50,12 @@ class Attachment
         if ($mimeType !== null) {
             $this->mimeType = $mimeType;
         }
+
+        return $this;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getFile()
     {
@@ -63,7 +63,7 @@ class Attachment
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getFilename()
     {
@@ -71,7 +71,7 @@ class Attachment
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getMimeType()
     {
