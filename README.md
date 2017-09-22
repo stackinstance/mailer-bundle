@@ -20,7 +20,5 @@ public function mailAction()
 ```
 
 ## Website
-- http://bundles.stackinstance.com
 - http://www.stackinstance.com
-- https://codedump.io
-- http://www.codetrust.nl
+- http://www.raymondkootstra.nl
