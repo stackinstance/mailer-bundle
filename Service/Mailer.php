@@ -20,7 +20,8 @@ namespace StackInstance\MailerBundle\Service;
  */
 class Mailer
 {
-    const BODY_TYPE = 'text/html';
+    const BODY_TYPE_HTML = 'text/html';
+    const BODY_TYPE_PLAIN = 'text/plain';
 
     /**
      * @var \Swift_Mailer
@@ -54,7 +55,8 @@ class Mailer
         $this->message->setSubject($subject);
         $this->message->setFrom($from);
         $this->message->setTo($to);
-        $this->message->setBody($body, self::BODY_TYPE);
+        $this->message->setBody($body, self::BODY_TYPE_HTML);
+        $this->message->addPart($this->htmlToText($body), self::BODY_TYPE_PLAIN);
 
         $this->processAttachments($attachments);
 
@@ -99,6 +101,25 @@ class Mailer
 
         $this->message->attach($mailAttachment);
         return $this;
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    protected function htmlToText($text = "")
+    {
+        preg_match("/<body[^>]*>(.*?)<\/body>/is", $text, $match);
+        if (isset($match[1])) {
+            $match = $match[1];
+        } else {
+            $match = $text;
+        }
+        $text = strip_tags(str_replace("</p>", "\n", $match));
+        $text = str_replace("&nbsp;", " ", $text);
+
+        return trim(html_entity_decode($text, ENT_QUOTES | ENT_HTML5));
     }
 
 }
