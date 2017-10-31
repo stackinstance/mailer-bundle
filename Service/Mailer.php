@@ -60,8 +60,9 @@ class Mailer
 
         $this->processAttachments($attachments);
 
-        return $this->mailer->send($this->message);
-
+        $send = $this->mailer->send($this->message);
+        $this->reset();
+        return $send;        
     }
 
     /**
@@ -120,6 +121,14 @@ class Mailer
         $text = str_replace("&nbsp;", " ", $text);
 
         return trim(html_entity_decode($text, ENT_QUOTES | ENT_HTML5));
+    }
+    
+    /**
+    * Resets the mailer after sending an email
+    */
+    protected function reset()
+    {
+        $this->message = \Swift_Message::newInstance();    
     }
 
 }
