@@ -15,7 +15,7 @@ public function mailAction()
 
     $attachment->attach('/path/to/file/test.csv', 'file.csv', 'text/csv');
 
-    $mailer->send('This is my subject', 'This is the body', 'to@example.org', 'from@example.org', $attachment);
+    $mailer->send('This is my subject', 'This is the body', 'to@example.org', 'from@example.org', 'cc@address.com', 'bcc@address.com', $attachment);
 }
 ```
 
