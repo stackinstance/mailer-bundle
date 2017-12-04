@@ -15,14 +15,12 @@ namespace StackInstance\MailerBundle\Service;
  * Mailer service to send email via Swift Mailer in an easy way
  *
  * Class Mailer
+ *
  * @package StackInstance\MailerBundle\Service
  * @author Ray Kootstra <r.kootstra@stackinstance.com>
  */
-class Mailer
+class Mailer implements MailerInterface
 {
-    const BODY_TYPE_HTML = 'text/html';
-    const BODY_TYPE_PLAIN = 'text/plain';
-
     /**
      * @var \Swift_Mailer
      */
@@ -43,26 +41,30 @@ class Mailer
     }
 
     /**
-     * @param string               $subject
-     * @param string               $body
-     * @param array|string         $to
-     * @param array|string         $from
-     * @param array|AttachmentInterface|null    $attachments
-     * @return int
+     * @inheritdoc
      */
-    public function send($subject, $body, $to, $from, $attachments = null)
+    public function send($subject, $body, $to, $from, $cc = null, $bcc = null, $attachments = null)
     {
         $this->message->setSubject($subject);
         $this->message->setFrom($from);
         $this->message->setTo($to);
-        $this->message->setBody($body, self::BODY_TYPE_HTML);
-        $this->message->addPart($this->htmlToText($body), self::BODY_TYPE_PLAIN);
+        $this->message->setBody($body, MailerInterface::BODY_TYPE_HTML);
+        $this->message->addPart($this->htmlToText($body), MailerInterface::BODY_TYPE_PLAIN);
+
+        if ($cc !== null) {
+            $this->message->setCc($cc);
+        }
+
+        if ($bcc !== null) {
+            $this->message->setBcc($bcc);
+        }
 
         $this->processAttachments($attachments);
 
         $send = $this->mailer->send($this->message);
         $this->reset();
-        return $send;        
+
+        return $send;
     }
 
     /**
@@ -85,8 +87,7 @@ class Mailer
     }
 
     /**
-     * @param AttachmentInterface $attachment
-     * @return $this
+     * @inheritdoc
      */
     public function attach(AttachmentInterface $attachment)
     {
@@ -101,6 +102,7 @@ class Mailer
         }
 
         $this->message->attach($mailAttachment);
+
         return $this;
     }
 
@@ -122,13 +124,12 @@ class Mailer
 
         return trim(html_entity_decode($text, ENT_QUOTES | ENT_HTML5));
     }
-    
+
     /**
-    * Resets the mailer after sending an email
-    */
+     * Resets the mailer after sending an email
+     */
     protected function reset()
     {
-        $this->message = \Swift_Message::newInstance();    
+        $this->message = \Swift_Message::newInstance();
     }
-
 }
