@@ -37,7 +37,7 @@ class Attachment implements AttachmentInterface
     protected $mimeType;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function attach($file, $filename = null, $mimeType = null)
     {
@@ -55,7 +55,7 @@ class Attachment implements AttachmentInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getFile()
     {
@@ -63,7 +63,7 @@ class Attachment implements AttachmentInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getFilename()
     {
@@ -71,7 +71,7 @@ class Attachment implements AttachmentInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getMimeType()
     {
