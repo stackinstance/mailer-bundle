@@ -14,7 +14,7 @@ namespace StackInstance\MailerBundle\Service;
 /**
  * Class AttachmentInterface
  * @package StackInstance\MailerBundle\Service
- * @author Ray Kootstra <r.kootstra@stackinstance.com>
+ * @author Ray Kootstra <info@raymondkootstra.nl>
  */
 interface AttachmentInterface
 {
@@ -25,7 +25,7 @@ interface AttachmentInterface
      * @param string|null $mimeType
      * @return $this
      */
-    public function attach($file, $filename = null, $mimeType = null);
+    public function attach(string $file, string $filename = null, string $mimeType = null);
 
     /**
      * @return string

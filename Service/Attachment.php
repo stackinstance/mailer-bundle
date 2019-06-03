@@ -16,7 +16,7 @@ namespace StackInstance\MailerBundle\Service;
  *
  * Class Attachment
  * @package StackInstance\MailerBundle\Service
- * @author Ray Kootstra <r.kootstra@stackinstance.com>
+ * @author Ray Kootstra <info@raymondkootstra.nl>
  */
 class Attachment implements AttachmentInterface
 {
@@ -39,7 +39,7 @@ class Attachment implements AttachmentInterface
     /**
      * @inheritdoc
      */
-    public function attach($file, $filename = null, $mimeType = null)
+    public function attach(string $file, string $filename = null, string $mimeType = null)
     {
         $this->file = $file;
 

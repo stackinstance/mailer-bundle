@@ -20,5 +20,7 @@ public function mailAction()
 ```
 
 ## Website
-- http://www.stackinstance.com
 - http://www.raymondkootstra.nl
+
+## PHP requirements
+As of version 2.0.2 the Stack Instance Mailer bundle needs a minimum of php 7.0.0

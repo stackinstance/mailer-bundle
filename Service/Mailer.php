@@ -3,7 +3,7 @@
 /*
  * This file is part of the Mailer bundle from Stack Instance.
  *
- * (c) 2016 Ray Kootstra
+ * (c) 2019 Ray Kootstra
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,43 +11,62 @@
 
 namespace StackInstance\MailerBundle\Service;
 
+use \Swift_Mailer;
+use \Swift_Message;
+use \Swift_Attachment;
+
 /**
  * Mailer service to send email via Swift Mailer in an easy way
  *
  * Class Mailer
  *
  * @package StackInstance\MailerBundle\Service
- * @author Ray Kootstra <r.kootstra@stackinstance.com>
+ * @author Ray Kootstra <info@raymondkootstra.nl>
  */
 class Mailer implements MailerInterface
 {
     /**
-     * @var \Swift_Mailer
+     * @var Swift_Mailer
      */
     protected $mailer;
 
     /**
-     * @var \Swift_Message
+     * @var Swift_Message
      */
     protected $message;
 
     /**
-     * @param \Swift_Mailer $mailer
+     * @param Swift_Mailer $mailer
      */
-    public function __construct(\Swift_Mailer $mailer)
+    public function __construct(Swift_Mailer $mailer)
     {
         $this->mailer = $mailer;
-        $this->message = \Swift_Message::newInstance();
+        $this->message = Swift_Message::newInstance();
     }
 
     /**
      * @inheritdoc
      */
-    public function send($subject, $body, $to, $from, $cc = null, $bcc = null, $attachments = null)
-    {
-        $this->message->setSubject($subject);
+    public function send(
+        string $subject,
+        string $body,
+        $to,
+        $from,
+        $cc = null,
+        $bcc = null,
+        $attachments = null,
+        $returnPath = null
+    ) {
+        if ($returnPath !== null) {
+            $this->message->setReturnPath($returnPath);
+        }
+
+        $this->message->addReplyTo($from);
         $this->message->setFrom($from);
+
+        $this->message->setSubject($subject);
         $this->message->setTo($to);
+
         $this->message->setBody($body, MailerInterface::BODY_TYPE_HTML);
         $this->message->addPart($this->htmlToText($body), MailerInterface::BODY_TYPE_PLAIN);
 
@@ -84,6 +103,8 @@ class Mailer implements MailerInterface
                 $this->attach($attachments);
             }
         }
+
+        return $this;
     }
 
     /**
@@ -91,7 +112,7 @@ class Mailer implements MailerInterface
      */
     public function attach(AttachmentInterface $attachment)
     {
-        $mailAttachment = \Swift_Attachment::fromPath($attachment->getFile());
+        $mailAttachment = Swift_Attachment::fromPath($attachment->getFile());
 
         if ($attachment->getFilename() !== null) {
             $mailAttachment->setFilename($attachment->getFilename());
@@ -111,7 +132,7 @@ class Mailer implements MailerInterface
      *
      * @return string
      */
-    protected function htmlToText($text = "")
+    protected function htmlToText(string $text = "")
     {
         preg_match("/<body[^>]*>(.*?)<\/body>/is", $text, $match);
         if (isset($match[1])) {
@@ -130,6 +151,6 @@ class Mailer implements MailerInterface
      */
     protected function reset()
     {
-        $this->message = \Swift_Message::newInstance();
+        $this->message = Swift_Message::newInstance();
     }
 }
