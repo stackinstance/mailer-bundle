@@ -160,6 +160,6 @@ class Mailer implements MailerInterface
      */
     protected function reset()
     {
-        $this->message = Swift_Message::newInstance();
+        $this->message = null;
     }
 }
