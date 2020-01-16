@@ -41,7 +41,6 @@ class Mailer implements MailerInterface
     public function __construct(Swift_Mailer $mailer)
     {
         $this->mailer = $mailer;
-        $this->message = Swift_Message::newInstance();
     }
 
     /**
@@ -57,6 +56,9 @@ class Mailer implements MailerInterface
         $attachments = null,
         $returnPath = null
     ) {
+
+        $this->message = new \Swift_Message($subject);
+
         if ($returnPath !== null) {
             $this->message->setReturnPath($returnPath);
         }
