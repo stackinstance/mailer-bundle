@@ -61,15 +61,18 @@ class Mailer implements MailerInterface
 
         if ($returnPath !== null) {
             $this->message->setReturnPath($returnPath);
+            $this->message->addReplyTo($returnPath);
+        } else {
+            if (is_array($from)) {
+                foreach($from as $address => $name) {
+                    $this->message->addReplyTo($address, $name);
+                }
+            } else {
+                $this->message->addReplyTo($from);
+            }
         }
 
-        if (is_array($from)) {
-            foreach($from as $address => $name) {
-                $this->message->addReplyTo($address, $name);
-            }
-        } else {
-            $this->message->addReplyTo($from);
-        }
+
         
         $this->message->setFrom($from);
 
