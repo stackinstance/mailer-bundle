@@ -37,10 +37,11 @@ interface MailerInterface
      * @param array|string $cc
      * @param array|string $bcc
      * @param AttachmentInterface|AttachmentInterface[] $attachments
+     * @param null|string $returnPath
      *
      * @return int
      */
-    public function send(string $subject, string $body, $to, $from, $cc = null, $bcc = null, $attachments = null);
+    public function send(string $subject, string $body, $to, $from, $cc = null, $bcc = null, $attachments = null, $returnPath = null);
 
     /**
      * @param AttachmentInterface $attachment
